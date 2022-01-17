@@ -22,6 +22,16 @@ jobs:
           args: >
             --enableExperimental
             --scan Podfile.lock
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck-HTML
+        with:
+          project: 'test'
+          path: '.'
+          format: 'HTML'
+          args: >
+            --enableExperimental
+            --scan Podfile.lock
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
